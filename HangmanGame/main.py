@@ -172,6 +172,8 @@ class HangmanGame(QtWidgets.QWidget):
                 self.plainTextEditPicture.setPlainText(picture[6 - self.counter])
             if self.answer == word:
                 self.plainTextEditResult.appendPlainText(f"Вы угадали! Слово: {''.join(word).upper()}.")
+                self.lineEditAnswer.setEnabled(False)
+                self.pushButtonAnswer.setEnabled(False)
             if self.counter == 0:
                 self.lineEditAnswer.setEnabled(False)
                 self.pushButtonAnswer.setEnabled(False)
