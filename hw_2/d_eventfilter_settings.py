@@ -26,7 +26,7 @@ class Window(QtWidgets.QWidget):
         self.initSignals()
 
     def unitUi(self) -> None:
-        number = self.settings.value("Number", 0)
+        number = int(self.settings.value("Number", 0))
         measure = self.settings.value("CheckState", "")
 
         self.setWindowTitle("Декодер Тьюринга")
@@ -103,8 +103,8 @@ class Window(QtWidgets.QWidget):
         return super(Window, self).eventFilter(watched, event)
 
     def closeEvent(self, event: QtGui.QCloseEvent) -> None:
-        self.settings.setValue("Number", int(self.dial.value()))
-        self.settings.setValue("CheckState", str(self.comboBox.currentText()))
+        self.settings.setValue("Number", self.dial.value())
+        self.settings.setValue("CheckState", self.comboBox.currentText())
 
 
 if __name__ == "__main__":

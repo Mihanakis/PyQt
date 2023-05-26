@@ -279,7 +279,7 @@ class Game2048(QtWidgets.QWidget):
         :return: bool
         """
         if watched == self.pushButtonReset and event.type() == QtCore.QEvent.Type.KeyPress:
-            if self.flag == False:
+            if not self.flag:
                 if event.text().lower() in ['w', 'ц']:
                     self.upKeyPressed()
                 if event.text().lower() in ['a', 'ф']:
@@ -337,12 +337,12 @@ class Game2048(QtWidgets.QWidget):
         def wrapper(self):
             tempFieldList = self.fieldList.copy()
             funk(self)
+            self.flag = self.isWinCheck()
             if tempFieldList != self.fieldList:
                 self.stepRandomAddNumOnField()
             else:
                 self.setNumbersOnField()
                 self.flag = self.gameOverCheck()  # важен вызов этого метода именно в момент когда поле не изменилось
-            self.flag = self.isWinCheck()
         return wrapper
 
     @tempFieldChecher
