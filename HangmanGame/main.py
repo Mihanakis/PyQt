@@ -60,7 +60,7 @@ class HangmanGame(QtWidgets.QWidget):
         # layout plain text -------------------------------------------------------------------------------------------
         self.plainTextEditResult = QtWidgets.QPlainTextEdit()
         self.plainTextEditResult.appendPlainText("Добро пожаловать в игру Виселица!")
-        self.plainTextEditResult.setEnabled(False)
+        self.plainTextEditResult.setReadOnly(True)
 
         self.plainTextEditPicture = QtWidgets.QPlainTextEdit()
         self.plainTextEditPicture.setMinimumSize(90, 180)
@@ -89,7 +89,6 @@ class HangmanGame(QtWidgets.QWidget):
         while True:
             str_ = fake.word()
             if len(str_) >= 8:
-                print(str_)
                 self.word = str_
                 return
 
